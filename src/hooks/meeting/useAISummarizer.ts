@@ -41,9 +41,10 @@ export function useAISummarizer(): UseAISummarizerReturn {
       return null;
     }
 
-    const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY || import.meta.env.VITE_CLAUDE_API_KEY;
+    // Check localStorage first, then fall back to environment variables
+    const apiKey = localStorage.getItem('VITE_ANTHROPIC_API_KEY') || import.meta.env.VITE_ANTHROPIC_API_KEY || localStorage.getItem('VITE_CLAUDE_API_KEY') || import.meta.env.VITE_CLAUDE_API_KEY;
     if (!apiKey) {
-      setError('No API key found. Please add VITE_ANTHROPIC_API_KEY to your .env file');
+      setError('No API key found. Please go to Settings and enter your Anthropic API key.');
       return null;
     }
 

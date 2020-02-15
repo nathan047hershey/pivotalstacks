@@ -8,6 +8,7 @@ import { useVirtualParticipant } from '../hooks/meeting/useVirtualParticipant';
 import TranscriptionPanel from '../components/meating/TranscriptionPanel';
 import SummaryModal from '../components/meating/SummaryModal';
 import AIAssistant from '../components/meating/AIAssistant';
+import SettingsModal from '../components/meating/SettingsModal';
 
 const features = [
   { icon: Video, title: 'HD Video Conferencing', description: 'Crystal clear video calls with up to 100 participants' },
@@ -68,6 +69,7 @@ export function MeetingRoomPage() {
   const [showSummaryModal, setShowSummaryModal] = useState(false);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showAIPanel, setShowAIPanel] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   // AI Hooks
   const {
@@ -827,6 +829,7 @@ ${summary.nextSteps.map(s => `- ${s}`).join('\n')}
 
               {/* Settings */}
               <button
+                onClick={() => setShowSettings(true)}
                 className="p-3 md:p-4 bg-dark-700/50 text-dark-300 hover:bg-dark-600 hover:text-white rounded-xl transition-all duration-300"
                 title="Settings"
               >
@@ -860,6 +863,12 @@ ${summary.nextSteps.map(s => `- ${s}`).join('\n')}
           meetingTitle={meetingMode === 'demo' ? 'Demo Meeting' : 'Team Meeting'}
         />
       )}
+
+      {/* Settings Modal */}
+      <SettingsModal
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
     </div>
   );
 }

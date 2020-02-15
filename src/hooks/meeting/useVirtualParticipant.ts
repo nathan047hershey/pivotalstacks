@@ -81,9 +81,9 @@ export function useVirtualParticipant(): VirtualParticipantReturn {
     setCurrentResponse('');
 
     try {
-      const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY || import.meta.env.VITE_CLAUDE_API_KEY;
+      const apiKey = localStorage.getItem('VITE_ANTHROPIC_API_KEY') || import.meta.env.VITE_ANTHROPIC_API_KEY || localStorage.getItem('VITE_CLAUDE_API_KEY') || import.meta.env.VITE_CLAUDE_API_KEY;
       if (!apiKey) {
-        throw new Error('No API key found');
+        throw new Error('No API key found. Please go to Settings and enter your Anthropic API key.');
       }
 
       // Build context from previous messages
