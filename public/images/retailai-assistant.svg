@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="900" viewBox="0 0 1260 900">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1c1917"/>
+      <stop offset="100%" style="stop-color:#292524"/>
+    </linearGradient>
+  </defs>
+  <rect fill="url(#bg5)" width="1260" height="900"/>
+  <rect x="380" y="250" width="500" height="300" rx="20" fill="#f59e0b" opacity="0.15"/>
+  <circle cx="500" cy="400" r="80" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="760" cy="400" r="80" fill="#f59e0b" opacity="0.6"/>
+  <text x="630" y="620" font-family="Inter, sans-serif" font-size="42" font-weight="bold" fill="#f1f5f9" text-anchor="middle">RetailAI Assistant</text>
+  <text x="630" y="670" font-family="Inter, sans-serif" font-size="24" fill="#fcd34d" text-anchor="middle">AI-Powered Retail Management</text>
+</svg>
