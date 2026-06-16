@@ -348,41 +348,41 @@
   animation: float 8s ease-in-out infinite;
 }
 
-/* Dark mode backgrounds - lighter shades */
+/* Dark mode backgrounds - much lighter for modern look */
 .bg-dark-950 {
-  background-color: #1e293b;
-}
-
-.bg-dark-900 {
   background-color: #334155;
 }
 
-.bg-dark-800 {
+.bg-dark-900 {
   background-color: #475569;
 }
 
-.bg-dark-700 {
+.bg-dark-800 {
   background-color: #64748b;
 }
 
-.bg-dark-600 {
+.bg-dark-700 {
   background-color: #94a3b8;
 }
 
-.bg-dark-500 {
+.bg-dark-600 {
   background-color: #cbd5e1;
 }
 
-.bg-dark-400 {
+.bg-dark-500 {
   background-color: #e2e8f0;
 }
 
-.bg-dark-300 {
+.bg-dark-400 {
   background-color: #f1f5f9;
 }
 
-.bg-dark-200 {
+.bg-dark-300 {
   background-color: #f8fafc;
+}
+
+.bg-dark-200 {
+  background-color: #ffffff;
 }
 
 .bg-dark-100 {
