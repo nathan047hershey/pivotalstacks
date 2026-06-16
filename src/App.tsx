@@ -37,8 +37,11 @@ function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark-950">
       <div className="text-center">
-        <Loader2 className="w-10 h-10 text-primary-500 animate-spin mx-auto" />
-        <p className="mt-4 text-dark-400">Loading...</p>
+        <div className="relative">
+          <div className="w-16 h-16 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 animate-loading mx-auto" />
+          <div className="absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 animate-ping opacity-20 mx-auto" />
+        </div>
+        <p className="mt-6 text-dark-400 font-medium animate-pulse">Loading...</p>
       </div>
     </div>
   );
