@@ -6,13 +6,16 @@ interface User {
   email: string;
   fullName: string;
   avatarUrl?: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'manager' | 'user';
 }
 
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
   isAuthenticated: boolean;
+  isAdmin: boolean;
+  isManager: boolean;
+  canAccessAdmin: boolean;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signUp: (email: string, password: string, fullName: string) => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
@@ -140,12 +143,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const isAdmin = user?.role === 'admin';
+  const isManager = user?.role === 'manager';
+  const canAccessAdmin = isAdmin || isManager;
+
   return (
     <AuthContext.Provider
       value={{
         user,
         isLoading,
         isAuthenticated: !!user,
+        isAdmin,
+        isManager,
+        canAccessAdmin,
         signIn,
         signUp,
         signOut,

@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
 import { AIChatbot } from './components/ui/AIChatbot';
 import { Loader2 } from 'lucide-react';
+import { useAuth } from './lib/AuthContext';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
@@ -47,6 +48,25 @@ function PageLoader() {
   );
 }
 
+// Protected route wrapper for admin pages
+function AdminRoute({ children }: { children: React.ReactNode }) {
+  const { canAccessAdmin, isLoading, isAuthenticated } = useAuth();
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/auth/login" replace />;
+  }
+
+  if (!canAccessAdmin) {
+    return <Navigate to="/" replace />;
+  }
+
+  return <>{children}</>;
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -79,8 +99,12 @@ function App() {
           <Route path="/auth/register" element={<RegisterPage />} />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
 
-          {/* Admin route - no layout wrapper since AdminPage has its own sidebar */}
-          <Route path="/admin/*" element={<AdminPage />} />
+          {/* Admin route - protected, only admin and manager can access */}
+          <Route path="/admin/*" element={
+            <AdminRoute>
+              <AdminPage />
+            </AdminRoute>
+          } />
         </Routes>
       </Suspense>
     </BrowserRouter>

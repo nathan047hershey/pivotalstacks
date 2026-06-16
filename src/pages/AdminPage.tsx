@@ -179,6 +179,65 @@ function Dashboard() {
   );
 }
 
+// Manager Dashboard - Limited view for managers
+function ManagerDashboard() {
+  const [messages, setMessages] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => { loadMessages(); }, []);
+
+  const loadMessages = async () => {
+    try {
+      const timeoutPromise = new Promise<'timeout'>((resolve) => setTimeout(() => resolve('timeout'), 3000));
+      const fetchPromise = supabase.from('contact_submissions').select('*').order('created_at', { ascending: false });
+      const result = await Promise.race([fetchPromise, timeoutPromise]);
+      if (result === 'timeout') { setMessages(fallbackMessages); return; }
+      setMessages(result.data || fallbackMessages);
+    } catch (err) { setMessages(fallbackMessages); }
+    finally { setLoading(false); }
+  };
+
+  if (loading) return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 text-primary-500 animate-spin" /></div>;
+
+  return (
+    <div className="space-y-6">
+      <div><h1 className="text-2xl font-bold text-white">Manager Dashboard</h1><p className="text-dark-400">Welcome! Here's your overview.</p></div>
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="bg-dark-900 border border-dark-800 rounded-xl p-6">
+          <div className="flex items-center gap-3 mb-2">
+            <Mail className="w-5 h-5 text-warning-500" />
+            <span className="text-dark-400 text-sm">New Messages</span>
+          </div>
+          <p className="text-3xl font-bold text-white">{messages.filter(m => m.status === 'unread').length}</p>
+        </div>
+        <div className="bg-dark-900 border border-dark-800 rounded-xl p-6">
+          <div className="flex items-center gap-3 mb-2">
+            <Users className="w-5 h-5 text-accent-400" />
+            <span className="text-dark-400 text-sm">Total Messages</span>
+          </div>
+          <p className="text-3xl font-bold text-white">{messages.length}</p>
+        </div>
+      </div>
+      <div className="bg-dark-900 border border-dark-800 rounded-xl p-6">
+        <h2 className="font-semibold text-lg text-white mb-4">Recent Messages</h2>
+        <div className="space-y-3">
+          {messages.slice(0, 5).map((msg) => (
+            <div key={msg.id} className="flex items-center justify-between p-4 bg-dark-800 rounded-xl">
+              <div>
+                <p className="text-white font-medium">{msg.name}</p>
+                <p className="text-dark-400 text-sm">{msg.subject || 'No subject'}</p>
+              </div>
+              <span className={`px-2 py-1 text-xs rounded-full ${msg.status === 'unread' ? 'bg-warning-500/20 text-warning-400' : 'bg-dark-700 text-dark-400'}`}>
+                {msg.status}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // USERS ADMIN - Enhanced with full state control
 function UsersAdmin() {
   const [users, setUsers] = useState<any[]>([]);
@@ -1523,19 +1582,20 @@ export function AdminPage() {
   if (loading) return <div className="min-h-screen bg-dark-950 flex items-center justify-center"><Loader2 className="w-8 h-8 text-primary-500 animate-spin" /></div>;
 
   const path = location.pathname;
+  const isManager = user?.role === 'manager';
   let content;
-  if (path === '/admin' || path === '/admin/') content = <Dashboard />;
-  else if (path === '/admin/projects') content = <ProjectsAdmin />;
-  else if (path === '/admin/blog') content = <BlogAdmin />;
-  else if (path === '/admin/jobs') content = <JobsAdmin />;
+  if (path === '/admin' || path === '/admin/') content = isManager ? <ManagerDashboard /> : <Dashboard />;
+  else if (path === '/admin/projects') content = isManager ? <ManagerDashboard /> : <ProjectsAdmin />;
+  else if (path === '/admin/blog') content = isManager ? <ManagerDashboard /> : <BlogAdmin />;
+  else if (path === '/admin/jobs') content = isManager ? <ManagerDashboard /> : <JobsAdmin />;
   else if (path === '/admin/messages') content = <MessagesAdmin />;
-  else if (path === '/admin/users') content = <UsersAdmin />;
-  else if (path === '/admin/slides') content = <SlidesAdmin />;
-  else if (path === '/admin/stats') content = <StatsAdmin />;
-  else if (path === '/admin/services') content = <ServicesAdmin />;
-  else if (path === '/admin/team') content = <TeamAdmin />;
-  else if (path === '/admin/testimonials') content = <TestimonialsAdmin />;
-  else content = <Dashboard />;
+  else if (path === '/admin/users') content = isManager ? <ManagerDashboard /> : <UsersAdmin />;
+  else if (path === '/admin/slides') content = isManager ? <ManagerDashboard /> : <SlidesAdmin />;
+  else if (path === '/admin/stats') content = isManager ? <ManagerDashboard /> : <StatsAdmin />;
+  else if (path === '/admin/services') content = isManager ? <ManagerDashboard /> : <ServicesAdmin />;
+  else if (path === '/admin/team') content = isManager ? <ManagerDashboard /> : <TeamAdmin />;
+  else if (path === '/admin/testimonials') content = isManager ? <ManagerDashboard /> : <TestimonialsAdmin />;
+  else content = isManager ? <ManagerDashboard /> : <Dashboard />;
 
   return (
     <div className="min-h-screen bg-dark-950 flex">

@@ -281,23 +281,23 @@ export function ContactPage() {
                 </h2>
 
                 <div className="space-y-6 mb-8">
-                  <a href="mailto:support@pivotalstacks.com" className="flex items-start gap-4 group">
+                  <a href="mailto:mdhurpndhdkw597@gmail.com" className="flex items-start gap-4 group">
                     <div className="w-12 h-12 bg-primary-500/10 dark:bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary-500 transition-colors">
                       <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400 group-hover:text-white transition-colors" />
                     </div>
                     <div>
                       <span className="block text-gray-900 dark:text-white font-medium mb-1">Email</span>
-                      <span className="text-gray-600 dark:text-dark-400 text-sm">support@pivotalstacks.com</span>
+                      <span className="text-gray-600 dark:text-dark-400 text-sm">mdhurpndhdkw597@gmail.com</span>
                     </div>
                   </a>
 
-                  <a href="tel:+18005550000" className="flex items-start gap-4 group">
+                  <a href="tel:+12134751994" className="flex items-start gap-4 group">
                     <div className="w-12 h-12 bg-primary-500/10 dark:bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary-500 transition-colors">
                       <Phone className="w-5 h-5 text-primary-600 dark:text-primary-400 group-hover:text-white transition-colors" />
                     </div>
                     <div>
                       <span className="block text-gray-900 dark:text-white font-medium mb-1">Phone</span>
-                      <span className="text-gray-600 dark:text-dark-400 text-sm">+1 (800) 555-0000</span>
+                      <span className="text-gray-600 dark:text-dark-400 text-sm">+1 2134751994</span>
                     </div>
                   </a>
 
@@ -308,8 +308,8 @@ export function ContactPage() {
                     <div>
                       <span className="block text-gray-900 dark:text-white font-medium mb-1">Headquarters</span>
                       <span className="text-gray-600 dark:text-dark-400 text-sm">
-                        123 Innovation Drive<br />
-                        San Francisco, CA 94102
+                        420 Fort Thomas Place<br />
+                        Round Rock, TX, 78664
                       </span>
                     </div>
                   </div>
