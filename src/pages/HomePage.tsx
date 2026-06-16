@@ -126,7 +126,7 @@ export function HomePage() {
                 <Link
                   key={service.id}
                   to={`/services${service.category === 'Tools' ? '/resume-builder' : ''}`}
-                  className="card p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+                  className="card p-8 text-center hover-lift group"
                 >
                   <div className="w-14 h-14 bg-primary-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-500 transition-colors">
                     <IconComponent className="w-7 h-7 text-primary-500 group-hover:text-white transition-colors" />
