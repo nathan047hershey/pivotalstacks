@@ -281,13 +281,13 @@ export function ContactPage() {
                 </h2>
 
                 <div className="space-y-6 mb-8">
-                  <a href="mailto:mdhurpndhdkw597@gmail.com" className="flex items-start gap-4 group">
+                  <a href="mailto:mdgiwksdbsj942@gmail.com" className="flex items-start gap-4 group">
                     <div className="w-12 h-12 bg-primary-500/10 dark:bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary-500 transition-colors">
                       <Mail className="w-5 h-5 text-primary-600 dark:text-primary-400 group-hover:text-white transition-colors" />
                     </div>
                     <div>
                       <span className="block text-gray-900 dark:text-white font-medium mb-1">Email</span>
-                      <span className="text-gray-600 dark:text-dark-400 text-sm">mdhurpndhdkw597@gmail.com</span>
+                      <span className="text-gray-600 dark:text-dark-400 text-sm">mdgiwksdbsj942@gmail.com</span>
                     </div>
                   </a>
 
