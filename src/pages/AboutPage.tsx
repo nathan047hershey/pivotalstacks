@@ -737,7 +737,7 @@ export function AboutPage() {
 
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {technologies.map((tech, index) => (
-              <span key={index} className="px-4 py-2 rounded-lg text-sm transition-colors bg-dark-800 border-dark-700 hover:border-primary-500/50 hover:text-primary-400 border text-dark-300">
+              <span key={index} className="px-4 py-2 rounded-lg text-sm transition-all bg-gradient-to-r from-primary-500/20 to-accent-500/20 border border-primary-500/30 text-primary-300 hover:from-primary-500/30 hover:to-accent-500/30 hover:border-primary-500/50">
                 {tech}
               </span>
             ))}

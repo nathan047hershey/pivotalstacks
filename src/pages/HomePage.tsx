@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code2, Cloud, Smartphone, Brain, Palette, Users, Award, Shield, Loader2, Star, ChevronLeft, ChevronRight, Quote, FileText, TrendingUp, Clock, CheckCircle, Lightbulb, Heart, Zap, ChevronDown } from 'lucide-react';
+import { ArrowRight, Code2, Cloud, Smartphone, Brain, Palette, Users, Award, Shield, Loader2, Star, Quote, FileText, TrendingUp, Clock, CheckCircle, Lightbulb, Heart, Zap } from 'lucide-react';
 import { HeroSlider } from '../components/ui/HeroSlider';
 import { useSiteData } from '../hooks/useSiteData';
 
@@ -37,7 +37,6 @@ const companyValues = [
 
 export function HomePage() {
   const { heroSlides, services, stats, testimonials, loading } = useSiteData();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const mapSlides = (slidesToMap: any[]) => slidesToMap.map(s => ({ id: s.id, title: s.title, subtitle: s.subtitle, description: s.description, image: s.image_url || s.image, ctaText: s.cta_text, ctaLink: s.cta_link }));
   const slides = heroSlides.length > 0 ? mapSlides(heroSlides) : undefined;
   const displayServices = services.length > 0 ? services : defaultServices;
@@ -49,13 +48,6 @@ export function HomePage() {
     { id: '4', value: '15', label: 'Countries Served' },
   ];
   const displayStats = stats.length > 0 ? stats : defaultStats;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial(prev => (prev + 1) % displayTestimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [displayTestimonials.length]);
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-white dark:bg-dark-950">
@@ -195,30 +187,29 @@ export function HomePage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">What Clients Say</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full mx-auto" />
           </div>
-          <div className="max-w-3xl mx-auto text-center">
-            <Quote className="w-12 h-12 text-primary-500/30 mx-auto mb-6" />
-            <p className="text-xl md:text-2xl text-gray-700 dark:text-dark-200 italic mb-8 leading-relaxed">
-              "{displayTestimonials[currentTestimonial]?.quote}"
-            </p>
-            <div className="flex justify-center gap-1 mb-4">
-              {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />)}
-            </div>
-            <img
-              src={displayTestimonials[currentTestimonial]?.author_image}
-              alt={displayTestimonials[currentTestimonial]?.author_name}
-              className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
-            />
-            <p className="font-semibold text-gray-900 dark:text-white">{displayTestimonials[currentTestimonial]?.author_name}</p>
-            <p className="text-dark-500 text-sm">{displayTestimonials[currentTestimonial]?.author_role}</p>
-            <div className="flex justify-center gap-2 mt-6">
-              {displayTestimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentTestimonial(i)}
-                  className={`w-2 h-2 rounded-full transition-all ${i === currentTestimonial ? 'w-8 bg-primary-500' : 'bg-dark-400'}`}
-                />
-              ))}
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {displayTestimonials.map((testimonial, index) => (
+              <div key={index} className="card p-8 hover-lift">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />)}
+                </div>
+                <Quote className="w-8 h-8 text-primary-500/30 mb-4" />
+                <p className="text-gray-600 dark:text-dark-300 text-sm mb-6 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.author_image}
+                    alt={testimonial.author_name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-900 dark:text-white text-sm">{testimonial.author_name}</p>
+                    <p className="text-dark-500 text-xs">{testimonial.author_role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
