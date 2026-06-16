@@ -7,6 +7,10 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  server: {
+    host: true, // Listen on all network interfaces (use your IP to access)
+    port: 8200,
+  },
   build: {
     rollupOptions: {
       output: {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useTheme } from '../../lib/ThemeContext';
 import { UserAvatar } from './UserAvatar';
 
@@ -93,14 +93,6 @@ export function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${isDark ? 'bg-dark-800/50 text-dark-400 hover:text-white' : 'bg-gray-100 text-gray-600 hover:text-gray-900'}`}
-              aria-label="Toggle theme"
-            >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-
             <div className="hidden lg:block">
               <UserAvatar />
             </div>
@@ -135,18 +127,13 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <div className={`pt-4 mt-4 border-t ${isDark ? 'border-dark-800' : 'border-gray-200'} flex items-center justify-between`}>
-            <div className="flex items-center gap-3">
-              <Link to="/auth/login" className={`hover:text-primary-400 text-sm font-medium ${isDark ? 'text-dark-300' : 'text-gray-600'}`}>
-                Sign In
-              </Link>
-              <Link to="/auth/register" className="btn-primary text-sm py-2 px-4">
-                Get Started
-              </Link>
-            </div>
-            <button onClick={toggleTheme} className={`p-2 rounded-lg ${isDark ? 'bg-dark-800' : 'bg-gray-100'}`}>
-              {isDark ? <Sun className="w-5 h-5 text-dark-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
-            </button>
+          <div className={`pt-4 mt-4 border-t ${isDark ? 'border-dark-800' : 'border-gray-200'} flex items-center gap-3`}>
+            <Link to="/auth/login" className={`hover:text-primary-400 text-sm font-medium ${isDark ? 'text-dark-300' : 'text-gray-600'}`}>
+              Sign In
+            </Link>
+            <Link to="/auth/register" className="btn-primary text-sm py-2 px-4">
+              Get Started
+            </Link>
           </div>
         </div>
       </div>

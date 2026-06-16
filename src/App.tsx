@@ -9,6 +9,7 @@ const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.H
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
 const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
+const JobDetailPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.JobDetailPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const LoginPage = lazy(() => import('./pages/LoginPage').then(m => ({ default: m.LoginPage })));
 const RegisterPage = lazy(() => import('./pages/RegisterPage').then(m => ({ default: m.RegisterPage })));
@@ -64,6 +65,7 @@ function App() {
             <Route path="/portfolio/:id" element={<ProjectsPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/careers" element={<CareersPage />} />
+            <Route path="/careers/:jobId" element={<JobDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/meeting-room" element={<MeetingRoomPage />} />
             <Route path="/export" element={<ExportPage />} />

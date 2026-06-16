@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Code2, Smartphone, Cloud, Brain, FileText, Shield, ArrowRight, Check, Zap, Clock, Users, BarChart3 } from 'lucide-react';
-import { useTheme } from '../lib/ThemeContext';
 
 const services = [
   {
@@ -79,11 +77,8 @@ const technologies = [
 ];
 
 export function ServicesPage() {
-  const { setTheme } = useTheme();
+  
 
-  useEffect(() => {
-    setTheme('dark');
-  }, [setTheme]);
 
   return (
     <div className="min-h-screen">

@@ -41,11 +41,6 @@ const demoMessages = [
 type MeetingMode = 'start' | 'demo' | null;
 
 export function MeetingRoomPage() {
-  const { setTheme } = useTheme();
-
-  useEffect(() => {
-    setTheme('dark');
-  }, [setTheme]);
 
   // Meeting state
   const [showModeDialog, setShowModeDialog] = useState(false);

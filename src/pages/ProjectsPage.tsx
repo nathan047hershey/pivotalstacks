@@ -1,7 +1,6 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, MapPin, X, Code, Calendar, Maximize2, Grid3X3, LayoutGrid, Search, Star, ExternalLink } from 'lucide-react';
-import { useTheme } from '../lib/ThemeContext';
 
 const projectsData = [
   {
@@ -10,7 +9,7 @@ const projectsData = [
     category: 'webapp',
     location: 'San Francisco, CA',
     year: '2024',
-    image: '/images/techflow-dashboard.svg',
+    image: 'https://images.images.unsplash.com/photo-1542744173-8e7e53415bb0/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: true,
     description: 'Real-time analytics dashboard for monitoring business metrics with AI-powered insights.',
     highlights: ['AI Analytics', 'Real-time Data', 'Predictive Insights'],
@@ -23,7 +22,7 @@ const projectsData = [
     category: 'saas',
     location: 'Seattle, WA',
     year: '2024',
-    image: '/images/cloudsync-platform.svg',
+    image: 'https://images.images.unsplash.com/photo-1542744173-8e7e53415bb0/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: true,
     description: 'Enterprise cloud management platform for seamless multi-cloud infrastructure orchestration.',
     highlights: ['Multi-cloud', 'Auto-scaling', '99.99% Uptime'],
@@ -36,7 +35,7 @@ const projectsData = [
     category: 'edtech',
     location: 'Austin, TX',
     year: '2023',
-    image: '/images/edulearn-platform.svg',
+    image: 'https://images.images.unsplash.com/photo-1542744173-8e7e53415bb0R1oBF6MPI-unsplash.jpg?auto=compress&cs=tinysrgb&w=800',
     featured: true,
     description: 'Interactive e-learning platform with AI-powered personalized learning paths.',
     highlights: ['AI Learning Paths', 'Live Classes', 'Certifications'],
@@ -49,7 +48,7 @@ const projectsData = [
     category: 'healthcare',
     location: 'Boston, MA',
     year: '2024',
-    image: '/images/healthtrack-pro.svg',
+    image: 'https://images.images.unsplash.com/photo-1542744173-8e7e53415bb0/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: false,
     description: 'HIPAA-compliant healthcare management system with telemedicine integration.',
     highlights: ['HIPAA Compliant', 'Telemedicine', 'E-prescriptions'],
@@ -62,7 +61,7 @@ const projectsData = [
     category: 'retail',
     location: 'New York, NY',
     year: '2023',
-    image: '/images/retailai-assistant.svg',
+    image: 'https://images.images.unsplash.com/photo-1542744173-8e7e53415bb0/pexels-photo-3962309.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: false,
     description: 'AI-powered retail management system with inventory prediction.',
     highlights: ['Inventory AI', 'Sales Forecasting', 'CRM Integration'],
@@ -75,7 +74,7 @@ const projectsData = [
     category: 'fintech',
     location: 'Chicago, IL',
     year: '2024',
-    image: '/images/finsecure-banking.svg',
+    image: 'https://images.images.unsplash.com/photo-1542744173-8e7e53415bb0/pexels-photo-164501.jpeg?auto=compress&cs=tinysrgb&w=800',
     featured: false,
     description: 'Modern digital banking platform with biometric security.',
     highlights: ['Biometric Auth', 'Fraud Detection', 'Multi-currency'],
@@ -95,11 +94,8 @@ const categories = [
 ];
 
 export function ProjectsPage() {
-  const { setTheme } = useTheme();
+  
 
-  useEffect(() => {
-    setTheme('dark');
-  }, [setTheme]);
 
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showFilters, setShowFilters] = useState(false);

@@ -11,24 +11,43 @@ export function useSiteData() {
   const [usingFallback, setUsingFallback] = useState(false);
 
   useEffect(() => {
-    fetchAllData();
+    const timeoutId = setTimeout(() => {
+      // If still loading after 5 seconds, use fallback
+      setLoading(false);
+      setUsingFallback(true);
+    }, 5000);
+
+    fetchAllData().finally(() => {
+      clearTimeout(timeoutId);
+    });
   }, []);
 
   const fetchAllData = async () => {
     try {
-      const [
-        slidesResult,
-        servicesResult,
-        statsResult,
-        testimonialsResult,
-        projectsResult
-      ] = await Promise.all([
-        supabase.from('hero_slides').select('*'),
-        supabase.from('services').select('*'),
-        supabase.from('stats').select('*'),
-        supabase.from('testimonials').select('*'),
-        supabase.from('projects').select('*'),
+      const results = await Promise.all([
+        Promise.race([
+          supabase.from('hero_slides').select('*'),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
+        ]),
+        Promise.race([
+          supabase.from('services').select('*'),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
+        ]),
+        Promise.race([
+          supabase.from('stats').select('*'),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
+        ]),
+        Promise.race([
+          supabase.from('testimonials').select('*'),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
+        ]),
+        Promise.race([
+          supabase.from('projects').select('*'),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 5000))
+        ]),
       ]);
+
+      const [slidesResult, servicesResult, statsResult, testimonialsResult, projectsResult] = results;
 
       if (slidesResult.data?.length) setHeroSlides(slidesResult.data);
       if (servicesResult.data?.length) setServices(servicesResult.data);
