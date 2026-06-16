@@ -26,16 +26,7 @@ export function UserAvatar() {
   };
 
   if (!isAuthenticated) {
-    return (
-      <div className="flex items-center gap-3">
-        <Link to="/auth/login" className="text-dark-300 hover:text-white transition-colors text-sm font-medium">
-          Sign In
-        </Link>
-        <Link to="/auth/register" className="btn-primary text-sm py-2 px-4">
-          Get Started
-        </Link>
-      </div>
-    );
+    return null; // No avatar shown when not logged in
   }
 
   const initials = user?.fullName?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U';

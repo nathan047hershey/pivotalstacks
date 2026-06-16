@@ -127,14 +127,6 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <div className={`pt-4 mt-4 border-t ${isDark ? 'border-dark-800' : 'border-gray-200'} flex items-center gap-3`}>
-            <Link to="/auth/login" className={`hover:text-primary-400 text-sm font-medium ${isDark ? 'text-dark-300' : 'text-gray-600'}`}>
-              Sign In
-            </Link>
-            <Link to="/auth/register" className="btn-primary text-sm py-2 px-4">
-              Get Started
-            </Link>
-          </div>
         </div>
       </div>
     </nav>
