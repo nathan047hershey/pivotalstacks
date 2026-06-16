@@ -66,6 +66,15 @@ const defaultSlides: Slide[] = [
     ctaText: 'Learn More',
     ctaLink: '/services#ai',
   },
+  {
+    id: '6',
+    title: 'Cybersecurity Solutions',
+    subtitle: 'SECURITY',
+    description: 'Protect your business with enterprise-grade security, vulnerability assessments, and compliance solutions.',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80',
+    ctaText: 'Learn More',
+    ctaLink: '/services#security',
+  },
 ];
 
 export function HeroSlider({
