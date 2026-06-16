@@ -57,56 +57,40 @@
   /* Buttons */
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3
-           bg-gradient-to-r from-primary-600 to-accent-600 text-white font-semibold
+           bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold
            rounded-xl transition-all duration-300 ease-out
-           hover:shadow-primary hover:-translate-y-0.5
+           hover:shadow-lg hover:-translate-y-0.5
            active:scale-[0.98]
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900;
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-dark-950;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3
-           border-2 border-primary-500 text-primary-600 font-semibold
+           border-2 border-blue-500 text-blue-400 font-semibold
            rounded-xl transition-all duration-300 ease-out
-           hover:bg-primary-500 hover:text-white
+           hover:bg-blue-500 hover:text-white
            active:scale-[0.98]
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-dark-900;
-  }
-
-  .dark .btn-secondary {
-    @apply text-primary-400 border-primary-400 hover:text-white hover:border-primary-500;
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-dark-950;
   }
 
   .btn-ghost {
     @apply inline-flex items-center justify-center px-4 py-2
-           text-gray-600 font-medium transition-all duration-300
-           hover:text-primary-600 hover:bg-gray-100 rounded-lg;
-  }
-
-  .dark .btn-ghost {
-    @apply text-dark-300 hover:text-primary-400 hover:bg-dark-800/50;
+           text-gray-300 font-medium transition-all duration-300
+           hover:text-white hover:bg-dark-700 rounded-lg;
   }
 
   .btn-outline {
     @apply inline-flex items-center justify-center px-6 py-3
-           border border-gray-300 text-gray-700 font-medium
+           border border-dark-600 text-dark-200 font-medium
            rounded-xl transition-all duration-300
-           hover:border-primary-500 hover:text-primary-600 hover:bg-gray-50;
-  }
-
-  .dark .btn-outline {
-    @apply border-dark-700 text-dark-300 hover:border-primary-500 hover:text-primary-400 hover:bg-dark-800/50;
+           hover:border-blue-500 hover:text-blue-400 hover:bg-dark-700;
   }
 
   .btn-social {
     @apply inline-flex items-center justify-center px-6 py-3
-           w-full bg-gray-100 border border-gray-200 text-gray-800 font-medium
+           w-full bg-dark-700 border border-dark-600 text-dark-200 font-medium
            rounded-xl transition-all duration-300
-           hover:bg-gray-200 hover:border-gray-300;
-  }
-
-  .dark .btn-social {
-    @apply bg-dark-800 border-dark-700 text-dark-200 hover:bg-dark-700 hover:border-dark-600;
+           hover:bg-dark-600 hover:border-dark-500;
   }
 
   /* Cards */
@@ -348,45 +332,45 @@
   animation: float 8s ease-in-out infinite;
 }
 
-/* Dark mode backgrounds - rich dark theme */
+/* Dark mode backgrounds - deep dark theme */
 .bg-dark-950 {
-  background-color: #0a0f1a;
+  background-color: #000000;
 }
 
 .bg-dark-900 {
-  background-color: #111827;
+  background-color: #0a0a0a;
 }
 
 .bg-dark-800 {
-  background-color: #1f2937;
+  background-color: #111111;
 }
 
 .bg-dark-700 {
-  background-color: #374151;
+  background-color: #1a1a1a;
 }
 
 .bg-dark-600 {
-  background-color: #4b5563;
+  background-color: #262626;
 }
 
 .bg-dark-500 {
-  background-color: #6b7280;
+  background-color: #404040;
 }
 
 .bg-dark-400 {
-  background-color: #9ca3af;
+  background-color: #666666;
 }
 
 .bg-dark-300 {
-  background-color: #d1d5db;
+  background-color: #999999;
 }
 
 .bg-dark-200 {
-  background-color: #e5e7eb;
+  background-color: #cccccc;
 }
 
 .bg-dark-100 {
-  background-color: #f3f4f6;
+  background-color: #f0f0f0;
 }
 
 /* Text colors */
